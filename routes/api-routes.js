@@ -1,13 +1,24 @@
 const express = require('express')
 const router = express.Router()
+const db = require('../models')
 
-router.get ()
+// router.get()
 
-router.post()
+router.post('/api/todos', async (req,res) => {
+    
+    try {
+        console.log(req.body)
+        await db.Todo.create(req.body)
+        res.status(200).send()
+    } catch(err) {
+        res.status(500).send(err)
+    }
+    
+})
 
-router.put()
+// router.put()
 
-router.delete()
+// router.delete()
 
 
 module.exports = router
